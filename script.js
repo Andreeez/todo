@@ -7,6 +7,7 @@ $(document).ready(function(){
     
     $(".helloForm").hide();
     $(".forgotForm").hide();
+    $(".welcome").show();
     // Klicka på logga in
     $(".loginbutton").click(function(){
         
@@ -15,11 +16,18 @@ $(document).ready(function(){
                 // Dölj inlogg Visa hello
                 $(".hejString").append(" hej " + $(".userEmail").val() );
                 $(".loginForm").hide();
+                $(".welcome").hide();
                 $(".helloForm").show();
+                $(".loginbutton").hide();
+                $(".logoutbutton").show();
+                $(".userEmail").hide();
+                $(".userPassword").hide();
             } else {
                 console.log("fel ifyllt")
                 // Dölj inlogg visa forgotPass
+                
                 $(".loginForm").hide();
+                $(".welcome").hide();
                 $(".forgotForm").show();
             }
     });
