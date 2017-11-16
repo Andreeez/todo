@@ -2,16 +2,50 @@ console.log("hej");
 
 $(document).ready(function(){
     // Kör denna kod när sidan laddas
-    var ourUser = "test"
-    var ourPassword = "password"
+//var ourUser = "test"
+  //  var ourPassword = "password"
+    
+    sessionStorage.ourUser = "test"
+    sessionStorage.ourPassword = "password"
+
     
     $(".helloForm").hide();
     $(".forgotForm").hide();
     $(".welcome").show();
     // Klicka på logga in
+
     $(".loginbutton").click(function(){
         
-        if (ourUser == $(".userEmail").val() && ourPassword == $(".userPassword").val()) {
+        /**if (sessionStorage.ourUser ) {
+            $(".welcome").show();
+
+         } else if {
+                $(".hejString").append(" hej " + $(".userEmail").val() );
+                $(".loginForm").hide();
+                $(".welcome").hide();
+                $(".helloForm").show();
+                $(".loginbutton").hide();
+                $(".logoutbutton").show();
+                $(".userEmail").hide();
+                $(".userPassword").hide();
+            }
+            else {
+                console.log("fel ifyllt")
+                // Dölj inlogg visa forgotPass
+                
+                $(".loginForm").hide();
+                $(".welcome").hide();
+                $(".forgotForm").show();
+            }
+
+        }    
+
+        //}
+
+
+
+
+        /**if (ourUser == $(".userEmail").val() && ourPassword == $(".userPassword").val()) {
                 console.log("user mail is ok");
                 // Dölj inlogg Visa hello
                 $(".hejString").append(" hej " + $(".userEmail").val() );
@@ -29,7 +63,40 @@ $(document).ready(function(){
                 $(".loginForm").hide();
                 $(".welcome").hide();
                 $(".forgotForm").show();
-            }
+            }*/
+
+            if (sessionStorage.ourUser !=null) {
+                // Gör vad som ska göras om vi redan är inloggade.
+                } else {
+                // visa sidan för en ej inloggad men login funktion tex
+                               
+                  if (sessionStorage.ourUser == $(".userEmail").val() && sessionStorage.ourPassword == $(".userPassword").val()) {
+                    console.log("user mail is ok");
+                    // Dölj inlogg Visa hello
+                    $(".hejString").append(" hej " + $(".userEmail").val() );
+                    $(".loginForm").hide();
+                    $(".welcome").hide();
+                    $(".helloForm").show();
+                    $(".loginbutton").hide();
+                    $(".logoutbutton").show();
+                    $(".userEmail").hide();
+                    $(".userPassword").hide();
+                } else {
+                    console.log("fel ifyllt")
+                    // Dölj inlogg visa forgotPass
+                    
+                    $(".loginForm").hide();
+                    $(".welcome").hide();
+                    $(".forgotForm").show();
+                }
+                }
+
+
+
     });
 
 });
+
+
+
+
