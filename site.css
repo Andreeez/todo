@@ -10,9 +10,32 @@ body {
     height: 5em;
     display: flex;
     justify-content: space-between;
+    display: fixed;
+    align-items: center;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+.logos {
+    color: green;
+    font-size: 2em;
+    
 }
 
 
 #main {
-    margin-top: 5em;
+    
+    text-align: center;
+    min-height: 400px;
+    background-color: blue;
+}
+
+
+#footer {
+    background-color: grey;
+    height: 10em;
+    color: white;
 }

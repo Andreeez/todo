@@ -1,12 +1,31 @@
 console.log("hej");
+console.log("Tjabba");
+console.log("yo");
 
 $(document).ready(function(){
     var ourUser = "test"; 
     var ourPassword = "password";
     
+    var stuffToDo = [
+        "Klipp gräset",
+        "Betala räkningar",
+        "Köp mjölk",
+        "Spika tavlor"
+    ];
+    
+    var json_str = JSON.stringify(stuffToDo);
+    //localStorage.doList = json_str;
+    localStorage.stuffToDo = json_str;
+    //var loopArray = JSON.parse(localStorage.doList);
+    var loopArray = JSON.parse(localStorage.stuffToDo);
     $(".logoutbutton").hide();
     $(".forgotForm").hide();
+    $(".addToStuffList").hide();
     
+    function addStuffToDo(){
+        stuffToDo.push()
+    }
+
     if(sessionStorage.userName !=null){
         $(".welcome").hide();
         $(".hello").text(sessionStorage.userName);
@@ -14,7 +33,19 @@ $(document).ready(function(){
         $("input, label").hide();
         $(".logoutbutton").show();
         $(".forgotForm").hide();
+        $(".addStuff").show();
+        $(".addToStuffButton").show();
+        
+
+        $("#main").append("<ul class='stuffList'></ul>");
+        
+                loopArray.forEach(function(index) {
+                    $(".stuffList").append("<li>" + index + "</li>");
+                            
+                });
+              
     } else {
+
         $(".loginbutton").click(function(){
             if (ourUser == $(".userEmail").val() && ourPassword == $(".userPassword").val()) {
                 sessionStorage.userName = "Anders Hagelkvist";
@@ -24,11 +55,20 @@ $(document).ready(function(){
                 $("input, label").hide();
                 $(".logoutbutton").show();
                 $(".forgotForm").hide();
+                $(".addStuff").show();
+                $(".addToStuffButton").show();
+                $("#main").append("<ul class='stuffList'></ul>");
 
+                loopArray.forEach(function(index) {
+                    $(".stuffList").append("<li>" + index + "</li>");
+                    
+                });
+               
             } else {
                 
                 $(".inloggform").show();
-                //$(".loginbutton").show();
+                
+               
             }
 
         });
@@ -40,46 +80,3 @@ $(document).ready(function(){
         });
 
 });
-
-
-   /** $(document).ready(function(){
-        var ourUser = "test"
-        var ourPassword = "password"
-
-            if (sessionStorage.ourUser !=null) {
-               
-                // Gör vad som ska göras om vi redan är inloggade.
-                } else {
-                    
-                        // Kör denna kod när sidan laddas
-
-                        
-                // visa sidan för en ej inloggad men login funktion tex
-                $(".loginbutton").click(function(){
-                    sessionStorage.ourUser = "test"
-                    sessionStorage.ourPassword = "password"
-                  if (ourUser == $(".userEmail").val() && ourPassword == $(".userPassword").val()) {
-                    console.log("user mail is ok");
-                   
-
-                    // Dölj inlogg Visa hello
-                    $(".hejString").append(" hej " + $(".userEmail").val() );
-                    $(".loginForm").hide();
-                    $(".welcome").hide();
-                    $(".helloForm").show();
-                    $(".loginbutton").hide();
-                    $(".logoutbutton").show();
-                    $(".userEmail").hide();
-                    $(".userPassword").hide();
-                } else {
-                    console.log("fel ifyllt")
-                    // Dölj inlogg visa forgotPass
-                    
-                    $(".loginForm").hide();
-                    $(".welcome").hide();
-                    $(".forgotForm").show();
-                }
-            }); 
-
-}); */
-
